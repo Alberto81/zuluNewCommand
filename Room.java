@@ -103,13 +103,13 @@ public class Room
      * 
      * @return item the item with the given id. null otherwise
      */
-    public Item getItem(String id)
+    public Item getItem(String nombreCorto)
     {      
 		int index = 0;
 		Item item = null;
         while((item == null) && (index < items.size())) { 
         	Item currentItem = items.get(index);
-        	if (currentItem.getId().equals(id)) {
+        	if (currentItem.getNombre().equals(nombreCorto)) {
 				item = currentItem;
         	}
         	index++;
@@ -123,12 +123,12 @@ public class Room
      * 
      * @param id the id of the item to remove
      */
-    public void removeItem(String id)
+    public void removeItem(String nombreCorto)
     {
  		int index = 0;
  	  	boolean found = false;
   		while(index < items.size() && !found){
-    		if(items.get(index).getId().equals(id)){
+    		if(items.get(index).getNombre().equals(nombreCorto)){
 			items.remove(index);
 			found = true;
     		}

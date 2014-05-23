@@ -7,9 +7,9 @@
 public class Item
 {
     private String description;
-    private double weight;
-    private String id;
-    private static int idSiguiente = 1; 
+    private float weight;
+    private String nombreCorto;
+    private String combinaCon;
     private boolean canBeTaken;
     
     /**
@@ -18,14 +18,13 @@ public class Item
      * @param description The item's description
      * @param weight The item's weight
      */
-    public Item(String description, double weight, boolean canBeTaken)
+    public Item(String description, float weight, boolean canBeTaken, String nombreCorto, String combinaCon)
     {
-        this.id = "" + idSiguiente;
-        this.idSiguiente++;
-        
         this.description = description;
         this.weight = weight;
         this.canBeTaken = canBeTaken;
+        this.nombreCorto = nombreCorto;
+        this.combinaCon = combinaCon;
     }
     
     /**
@@ -35,7 +34,7 @@ public class Item
      */
     public String getLongDescription()
     {
-        return "ID " + id + ": " + description + " (" + weight + " kg.)";
+        return "Item: " + nombreCorto + "; " + description + " (" + weight + " kg.)";
     }
     
     
@@ -44,9 +43,9 @@ public class Item
      * 
      * @return el id del objeto
      */
-    public String getId()
+    public String getNombre()
     {
-        return id;
+        return nombreCorto;
     }
     
     /**

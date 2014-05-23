@@ -37,55 +37,51 @@ public class Game
      */
     private void createRooms()
     {
-        Room galicia, leon, castilla, portugal, aragon, granada;
 
         // create the rooms
-        galicia = new Room("el reino de Galicia");
-        leon = new Room("el reino de León");
-        castilla = new Room("el reino de Castilla");
-        aragon = new Room("el reino de Aragon");
-        granada = new Room("el reino de Granada");
-        portugal = new Room("el reino de Portugal");                          
+        Room zapateria = new Room("Una tienda donde venden todo tipo de calzado.");
+        Room plaza = new Room("amplia plaza redonda con una fuente enmedio");
+        Room tiendaRopa = new Room("trapos a gogo");
+        Room peluqueria = new Room("la peluqueria del centro comercial");
+        Room descansillo = new Room("un espacio amplio al sur del centro comercial");
+        Room servicios = new Room("los wc del centro comercial");
+        Room salida = new Room("la salida del centro comercial");
 
         // initialise room exits
-        galicia.setExit("east", leon);
-        galicia.setExit("south", portugal);
-        galicia.setExit("southEast", castilla);
+        zapateria.setExit("southEast", peluqueria);
+        zapateria.setExit("south", plaza);
+        zapateria.setExit("salta", salida);
 
-        leon.setExit("south", castilla);
-        leon.setExit("west", galicia);
+        plaza.setExit("north", zapateria);
+        plaza.setExit("west", tiendaRopa);
+        plaza.setExit("south", descansillo);
+        plaza.setExit("east", peluqueria);
+        plaza.setExit("bucea", servicios);
+        
+        tiendaRopa.setExit("east",plaza );
+        
+        peluqueria.setExit("west", plaza);
+        peluqueria.setExit("northWest", zapateria);
 
-        castilla.setExit("north", leon);
-        castilla.setExit("east", aragon);
-        castilla.setExit("south", granada);
-        castilla.setExit("west", portugal);
-        castilla.setExit("northWest", galicia);
+        descansillo.setExit("north", plaza);
+        descansillo.setExit("south", salida);
+        descansillo.setExit("east", servicios);
+        descansillo.setExit("vuela", zapateria);
 
-        granada.setExit("north", castilla);
-        granada.setExit("jumpingNorthEast", aragon);
-
-        aragon.setExit("west", castilla);
-
-        portugal.setExit("north", galicia);
-        portugal.setExit("east", castilla);
+        servicios.setExit("east",descansillo );
+        servicios.setExit("bucea", plaza);
+        
+        salida.setExit("north", descansillo);
         
         //define the items
-        galicia.addItem(new Item("Una espada gaelica", 3.5, true));
-        galicia.addItem(new Item("Un tonel de vino", 10.2, false));
+        plaza.addItem(new Item("una gran maceta con una palmera.", 49.950F, true, "maceta", "no combina"));
+        plaza.addItem(new Item("una cartera perdida.", 0.05F, true, "cartera", "no combina"));
+        zapateria.addItem(new Item("una moneda reluciente.", 0.005F, true, "moneda", "maquina"));
+        peluqueria.addItem(new Item("una revista del corazón.",0.2F, true, "revista", "no combina"));
+        servicios.addItem(new Item("una llave perdida.", 0.03F, true, "llave", "no combina"));
+        descansillo.addItem(new Item("una maquina de refrescos.", 150.0F, false, "maquina", "moneda"));
         
-        leon.addItem(new Item("El Santo Grial", 1.4, true));
-        
-        castilla.addItem(new Item("Un cuchillo afilado", 0.5, true));
-        castilla.addItem(new Item("Un cofre de oro", 3.0, true));
-        castilla.addItem(new Item("Un baul de madera", 24.8, true));
-        
-        aragon.addItem(new Item("Una carreta", 35.5, false));
-        
-        granada.addItem(new Item("Una pocima contra el dolor de cabeza", 0.6, true));
-        
-        portugal.addItem(new Item("Una armadura", 20.2, false));        
-    
-        player.setCurrentRoom(leon);
+        player.setCurrentRoom(plaza);
     }
 
     /**
@@ -112,9 +108,9 @@ public class Game
     private void printWelcome()
     {
         System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-        System.out.println("Type 'help' if you need help.");
+        System.out.println("Bienvenido a Zuul!");
+        System.out.println("World of Zuul es un nuevo e increiblemente aburrido juego.");
+        System.out.println("escribe ayuda para saber de los comandos.");
         System.out.println();
         player.printLocationInfo();
     }
@@ -129,7 +125,7 @@ public class Game
         boolean wantToQuit = false;
 
         if(command.isUnknown()) {
-            System.out.println("I don't know what you mean...");
+            System.out.println("No entiendo lo que dices...");
             return false;
         }
 
