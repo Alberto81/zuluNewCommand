@@ -159,7 +159,7 @@ public class Game
              player.drop(command);
              break;
         case USE:
-            System.out.println(command.getSecondWord()+" "+command.getTerceraPalabra());
+          player.accion(player.usar(command));
              break;
         }
         return wantToQuit;
@@ -167,6 +167,9 @@ public class Game
 
     // implementations of user commands:
 
+
+    
+    
     /**
      * Print out some help information.
      * Here we print some stupid, cryptic message and a list of the 

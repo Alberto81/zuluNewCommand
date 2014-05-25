@@ -109,10 +109,81 @@ public class Player
 
     }
 
-    
+    public String usar(Command command)
+    {
+        String codigo = null;
+
+        if (!command.hasSecondWord()||!command.hasTerceraPalabra()){
+            System.out.println("introduce el comando y los dos objetos separados por un espacio");
+        }
+        else{
+            String item1 = command.getSecondWord();
+            String item2 = command.getTerceraPalabra();
+            int index = 0;
+            boolean findObj1 = false; //nos interesa que cuando encuentre el objeto, deje de buscarlo, por si este está repetido
+            boolean findObj2 = false;
+            Item objeto = null;
+            while(index < mochila.size()||(findObj1&&findObj2)){
+                if(!findObj1){
+                    if(mochila.get(index).getNombre().equals(item1)){
+                        findObj1 = true;//dejamos de buscar la coincidencia con item1 y lo marcamos como encontrado
+                        objeto = mochila.get(index);//guardamos uno de los dos objetos, para en caso de total coincidencia mirar si es la pareja de objetos necesitada.
+                    }
+                }
+
+                if(!findObj2){
+                    if(mochila.get(index).getNombre().equals(item2)){
+                        findObj2 = true;//dejamos de buscar la coincidencia con item2, encontrado
+                    }
+                }
+                index++;
+            }//nos falta por buscar por los objetos fijos de la habitación.si un objeto ya ha sido encontrado, no lo buscaremos.
+            //podriamos hacer esta parte del metodo con otro metodo que trabajase desde room, pero por estar trabajando con tantas varibles locales, lo mejor será crear
+            //un método en room para traernos el arrayList de objetos.
+            ArrayList<Item> itSuelo = currentRoom.getItems();
+            index = 0;
+            while(index < itSuelo.size()||(findObj1&&findObj2)){
+
+                if ( itSuelo.get(index).canBeTaken()){               //este primer condicional es para tener en cuenta solo los objetos fijos al suelo.
+                    // estos bloques son iguales que en el bucle de mochila
+                    if(!findObj1){
+                        if(itSuelo.get(index).getNombre().equals(item1)){
+                            findObj1 = true;//dejamos de buscar la coincidencia con item1 y lo marcamos como encontrado
+                            objeto = mochila.get(index);//guardamos uno de los dos objetos, para en caso de total coincidencia mirar si es la pareja de objetos necesitada.
+                        }
+                    }
+
+                    if(!findObj2){
+                        if(itSuelo.get(index).getNombre().equals(item2)){
+                            findObj2 = true;//dejamos de buscar la coincidencia con item2, encontrado
+                        }
+                    }
+                }
+                index++;
+            }
+            //ya hemos buscado todo lo que teniamos que buscar, llegados aqui sabemos si existen los dos objetos, en caso de existir:
+
+            if (findObj1 && findObj2){//si encontramos los dos objetos:
+                if(objeto.getCombina().equals(item2)){
+                    codigo = objeto. getCodigo()
+                }else{System.out.println("los objetos no combinan");}
+            }else{System.out.println("no dispones de uno o ambos objetos");}
+            return codigo;
+        }
+    }
+
+    public void accion(String codigo)
+    {
+        if (codigo == null){
+            System.out.println("no ha pasado nada");
+        }else if (codigo.equals.(act1)){//segun añadamos nuevas combinaciones, pondremos más codigos para que cada una haga lo que querramos.
+
+        }
+    }
+
     /**
      * Calculate the total weight for player's items.  
-     * 
+
      * @return the total weight for the player's items
      */
     public double getTotalWeightItems()
@@ -188,5 +259,4 @@ public class Player
     }
 
 }	  
-
 

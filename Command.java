@@ -54,6 +54,15 @@ public class Command
         return (commandWord == Option.UNKNOWN);
     }
 
+    
+    /**
+     * @return true if the command has a second word.
+     */
+    public boolean hasTerceraPalabra()
+    {
+        return (terceraPalabra != null);
+    }
+    
     /**
      * @return true if the command has a second word.
      */

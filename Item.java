@@ -51,14 +51,31 @@ public class Item
     
     
     /**
-     * Devuelve el id del objeto
+     * Devuelve el nombre corto del objeto
      * 
-     * @return el id del objeto
+     * @return el nombre corto del objeto
      */
     public String getNombre()
     {
         return nombreCorto;
     }
+    
+     /**
+     * Devuelve el nombre con el que combina
+     */
+    public String getCombina()
+    {
+        return  combinaCon;
+    }
+    
+     /**
+     * Devuelve el codigo de accion en caso de coincidencia
+     */
+    public String getCodigo()
+    {
+        return accion;
+    }
+    
     
     /**
      * Get the item's weight

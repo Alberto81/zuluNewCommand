@@ -34,7 +34,15 @@ public class Room
         exits = new HashMap<>();
         items = new ArrayList<>();
     }
-
+    
+    /**
+    * metodo para importar items
+    */
+    public  ArrayList<Item> getItems()
+     {
+      return items;    
+     }
+    
     public void setExit(String direction, Room nextRoom)
     {
         exits.put(direction, nextRoom);
