@@ -10,6 +10,7 @@ public class Item
     private float weight;
     private String nombreCorto;
     private String combinaCon;
+    private String accion;
     private boolean canBeTaken;
     
     /**
@@ -18,13 +19,24 @@ public class Item
      * @param description The item's description
      * @param weight The item's weight
      */
-    public Item(String description, float weight, boolean canBeTaken, String nombreCorto, String combinaCon)
+    public Item(String description, float weight, boolean canBeTaken, String nombreCorto)
     {
         this.description = description;
         this.weight = weight;
         this.canBeTaken = canBeTaken;
         this.nombreCorto = nombreCorto;
-        this.combinaCon = combinaCon;
+        combinaCon = "";
+        accion = "";
+    }
+    
+     /**
+     * asi solo daremos valores utiles a los objetos que se puedan combinar, sin tener que tocar el constructor de los items.
+     */
+    public void activaUsar(String combinaCon, String accion)
+    {
+        combinaCon = combinaCon;
+        accion = accion;
+    
     }
     
     /**
