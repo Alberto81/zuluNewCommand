@@ -2,6 +2,7 @@ public class Command
 {
     private Option commandWord;
     private String secondWord;
+    private String terceraPalabra;
 
     /**
      * Create a command object. First and second word must be supplied, but
@@ -10,11 +11,12 @@ public class Command
      *                  was not recognised.
      * @param secondWord The second word of the command.
      */
-    public Command(Option firstWord, String secondWord)
+    public Command(Option firstWord, String secondWord, String terceraPalabra)
     {
         commandWord = firstWord;
         this.secondWord = secondWord;
-    }
+        this.terceraPalabra = terceraPalabra;
+    } 
 
     /**
      * Return the command word (the first word) of this command. If the
@@ -34,7 +36,16 @@ public class Command
     {
         return secondWord;
     }
-
+    
+    /**
+     * @return The second word of this command. Returns null if there was no
+     * second word.
+     */
+    public String getTerceraPalabra()
+    {
+        return terceraPalabra;
+    }
+    
     /**
      * @return true if this command was not understood.
      */

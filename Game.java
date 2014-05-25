@@ -158,6 +158,9 @@ public class Game
         case DROP:
              player.drop(command);
              break;
+        case USE:
+            System.out.println(command.getSecondWord()+" "+command.getTerceraPalabra());
+             break;
         }
         return wantToQuit;
     }
