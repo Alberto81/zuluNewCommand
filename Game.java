@@ -74,12 +74,12 @@ public class Game
         salida.setExit("north", descansillo);
         
         //define the items
-        plaza.addItem(new Item("una gran maceta con una palmera.", 49.950F, true, "maceta"));
-        plaza.addItem(new Item("una cartera perdida.", 0.05F, true, "cartera"));
-        zapateria.addItem(new Item("una moneda reluciente.", 0.005F, true, "moneda")).activaUsar("moneda", "act1");
-        peluqueria.addItem(new Item("una revista del corazón.",0.2F, true, "revista"));
-        servicios.addItem(new Item("una llave perdida.", 0.03F, true, "llave"));
-        descansillo.addItem(new Item("una maquina de refrescos.", 150.0F, false, "maquina").activaUsar("moneda", "act1"));
+        plaza.addItem(new Item("una gran maceta con una palmera.", 49.950F, true, "maceta", "",""));
+        plaza.addItem(new Item("una cartera perdida.", 0.05F, true, "cartera", "",""));
+        zapateria.addItem(new Item("una moneda reluciente.", 0.005F, true, "moneda","maquina", "act1"));
+        peluqueria.addItem(new Item("una revista del corazón.",0.2F, true, "revista", "", ""));
+        servicios.addItem(new Item("una llave perdida.", 0.03F, true, "llave", "",""));
+        descansillo.addItem(new Item("una maquina de refrescos.", 150.0F, false, "maquina","moneda", "act1"));
         
         player.setCurrentRoom(plaza);
     }

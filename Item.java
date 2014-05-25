@@ -19,14 +19,14 @@ public class Item
      * @param description The item's description
      * @param weight The item's weight
      */
-    public Item(String description, float weight, boolean canBeTaken, String nombreCorto)
+    public Item(String description, float weight, boolean canBeTaken, String nombreCorto, String combinaCon, String accion)
     {
         this.description = description;
         this.weight = weight;
         this.canBeTaken = canBeTaken;
         this.nombreCorto = nombreCorto;
-        combinaCon = "";
-        accion = "";
+        this.combinaCon = combinaCon;
+        this.accion = accion;
     }
     
      /**
