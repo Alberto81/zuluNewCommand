@@ -131,34 +131,34 @@ public class Game
 
         Option commandWord = command.getCommandWord();
         switch (commandWord){
-        case HELP:
+         case HELP:
              printHelp();
              break;
-        case GO:
+         case GO:
              player.goRoom(command);
              break;
-        case LOOK:
+         case LOOK:
              player.look();
              break;
-        case EAT:
+         case EAT:
              player.eat();
              break;
-        case BACK:
+         case BACK:
              player.back();
              break;
-        case ITEMS:
+         case ITEMS:
              player.items();
              break;
-        case TAKE:
+         case TAKE:
              player.take(command);
              break;
-        case QUIT:
+         case QUIT:
              wantToQuit = quit(command);
              break;
-        case DROP:
+         case DROP:
              player.drop(command);
              break;
-        case USE:
+         case USE:
           player.accion(player.usar(command));
              break;
         }

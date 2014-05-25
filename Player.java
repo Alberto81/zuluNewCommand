@@ -123,7 +123,7 @@ public class Player
             boolean findObj1 = false; //nos interesa que cuando encuentre el objeto, deje de buscarlo, por si este está repetido
             boolean findObj2 = false;
             Item objeto = null;
-            while(index < mochila.size()||(findObj1&&findObj2)){
+            while(index < mochila.size()||(!findObj1 && !findObj2)){
                 if(!findObj1){
                     if(mochila.get(index).getNombre().equals(item1)){
                         findObj1 = true;//dejamos de buscar la coincidencia con item1 y lo marcamos como encontrado
@@ -142,14 +142,15 @@ public class Player
             //un método en room para traernos el arrayList de objetos.
             ArrayList<Item> itSuelo = currentRoom.getItems();
             index = 0;
-            while(index < itSuelo.size()||(findObj1&&findObj2)){
-
-                if ( itSuelo.get(index).canBeTaken()){               //este primer condicional es para tener en cuenta solo los objetos fijos al suelo.
+           
+            while(index < itSuelo.size()||(!findObj1 && !findObj2)){
+                 
+                if (!(itSuelo.get(index).canBeTaken() ) ){               //este primer condicional es para tener en cuenta solo los objetos fijos al suelo.
                     // estos bloques son iguales que en el bucle de mochila
                     if(!findObj1){
                         if(itSuelo.get(index).getNombre().equals(item1)){
                             findObj1 = true;//dejamos de buscar la coincidencia con item1 y lo marcamos como encontrado
-                            objeto = mochila.get(index);//guardamos uno de los dos objetos, para en caso de total coincidencia mirar si es la pareja de objetos necesitada.
+                            objeto = itSuelo.get(index);//guardamos uno de los dos objetos, para en caso de total coincidencia mirar si es la pareja de objetos necesitada.
                         }
                     }
 
@@ -163,21 +164,39 @@ public class Player
             }
             //ya hemos buscado todo lo que teniamos que buscar, llegados aqui sabemos si existen los dos objetos, en caso de existir:
 
+            if (findObj1){System.out.println("objeto1 encontrad0");}
+            if (findObj2){System.out.println("objeto2 encontrad0");}            
+            
+            
+            
             if (findObj1 && findObj2){//si encontramos los dos objetos:
                 if(objeto.getCombina().equals(item2)){
-                    codigo = objeto. getCodigo()
+                    codigo = objeto. getCodigo();
                 }else{System.out.println("los objetos no combinan");}
             }else{System.out.println("no dispones de uno o ambos objetos");}
-            return codigo;
+
         }
+        return codigo;
     }
 
-    public void accion(String codigo)
+    public void accion(String cdg)
     {
-        if (codigo == null){
+        if (cdg == null){
             System.out.println("no ha pasado nada");
-        }else if (codigo.equals.(act1)){//segun añadamos nuevas combinaciones, pondremos más codigos para que cada una haga lo que querramos.
-
+        }else if (cdg.equals("act1")){//segun añadamos nuevas combinaciones, pondremos más codigos para que cada una haga lo que querramos.
+            // pongo peso cero al refresco para simplificar código. 
+            mochila.add(new Item("una fresca, deliciosa y burbujeante bebida.", 0.0F, true, "refresco", "",""));
+            System.out.println("añadido refresco a la mochila");
+            int index =0;
+            boolean eliminated = false;
+            while(index < mochila.size()||!eliminated){
+                if( mochila.get(index).getNombre().equals("moneda")){//así solo eliminamos la primera moneda que encontremos.
+                    mochila.remove(index);
+                    eliminated = true;
+                    System.out.println("eliminada moneda de la mochila"); 
+                }
+                index++;
+            }
         }
     }
 
